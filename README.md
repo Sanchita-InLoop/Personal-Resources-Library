@@ -21,7 +21,8 @@ This project uses client-side authentication and is intended for learning purpos
 
 
 ## Screenshots
-
+https://github.com/Sanchita-InLoop/Personal-Resources-Library/blob/main/loginPage.png
+https://github.com/Sanchita-InLoop/Personal-Resources-Library/blob/main/ResourcesList.png
 ## How to Run Locally
 1. Clone the repository  
 2. Open index.html in a browser
