@@ -18,10 +18,12 @@ A frontend-only web application that allows users to store, organize, and access
 This project uses client-side authentication and is intended for learning purposes only.
 
 ## Live Demo
-
+https://sanchita-inloop.github.io/Personal-Resources-Library/
 
 ## Screenshots
+## Login Page
 https://github.com/Sanchita-InLoop/Personal-Resources-Library/blob/main/loginPage.png
+## Resources Page
 https://github.com/Sanchita-InLoop/Personal-Resources-Library/blob/main/ResourcesList.png
 ## How to Run Locally
 1. Clone the repository  
