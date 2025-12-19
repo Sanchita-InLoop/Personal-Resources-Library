@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - Resource Library</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>My Personal Resource Library</h1>
+    <button id="logoutBtn">Logout</button>
+</header>
+
+<section class="controls">
+    <input type="text" id="searchInput" placeholder="Search resources (Enter title or note)">
+</section>
+
+<section class="add-resource">
+    <h3>Add New Resource</h3>
+    <input type="text" id="titleInput" placeholder="Title">
+    <input type="text" id="urlInput" placeholder="URL">
+    <textarea id="noteInput" placeholder="Personal Note"></textarea>
+    <button id="addResourceBtn">Add Resource</button>
+</section>
+
+<section id="resourceList" class="resource-list">
+    <!-- Resource cards will appear here -->
+</section>
+
+<script src="login.js"></script>
+<script src="dataController.js"></script>
+<script src="dashboard.js"></script>
+<script>
+    checkAuth(); // Protect page
+    document.getElementById("logoutBtn").addEventListener("click", logout);
+</script>
+
+</body>
+</html>
