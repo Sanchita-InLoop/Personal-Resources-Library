@@ -24,4 +24,4 @@ https://sanchita-inloop.github.io/Personal-Resources-Library/
 https://github.com/Sanchita-InLoop/Personal-Resources-Library/blob/main/ResourcesList.png
 ## How to Run Locally
 1. Clone the repository  
-2. Open index.html in a browser
+2. Open dashboard.html in a browser
