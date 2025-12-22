@@ -1,3 +1,39 @@
+// 1. Data Management (Replaces dataController.js)
+const STORAGE_KEY = "my_personal_library_data";
+
+function getResources() {
+    const data = localStorage.getItem(STORAGE_KEY);
+    return data ? JSON.parse(data) : [];
+}
+
+function saveResources(resources) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(resources));
+}
+
+function addResource(resource) {
+    const resources = getResources();
+    const newResource = {
+        ...resource,
+        id: Date.now().toString() // Unique ID based on timestamp
+    };
+    resources.push(newResource);
+    saveResources(resources);
+}
+
+function deleteResource(id) {
+    const resources = getResources().filter(res => res.id !== id);
+    saveResources(resources);
+}
+
+function filterResources(term) {
+    const resources = getResources();
+    return resources.filter(res => 
+        res.title.toLowerCase().includes(term.toLowerCase()) || 
+        res.note.toLowerCase().includes(term.toLowerCase())
+    );
+}
+
+// 2. UI Elements
 const titleInput = document.getElementById("titleInput");
 const urlInput = document.getElementById("urlInput");
 const noteInput = document.getElementById("noteInput");
@@ -5,11 +41,11 @@ const addResourceBtn = document.getElementById("addResourceBtn");
 const resourceList = document.getElementById("resourceList");
 const searchInput = document.getElementById("searchInput");
 
-// Render resources
+// 3. Render Logic
 function renderResources(resources) {
     resourceList.innerHTML = "";
     if (resources.length === 0) {
-        resourceList.innerHTML = "<p>No resources found.</p>";
+        resourceList.innerHTML = "<p style='text-align:center; color:#888;'>No resources found. Add one above!</p>";
         return;
     }
     resources.forEach(resource => {
@@ -25,7 +61,7 @@ function renderResources(resources) {
     });
 }
 
-// Add resource
+// 4. Event Listeners
 addResourceBtn.addEventListener("click", () => {
     const title = titleInput.value.trim();
     const url = urlInput.value.trim();
@@ -44,17 +80,19 @@ addResourceBtn.addEventListener("click", () => {
     renderResources(getResources());
 });
 
-// Delete resource
 function deleteResourceCard(id) {
-    deleteResource(id);
-    renderResources(getResources());
+    if(confirm("Are you sure you want to delete this resource?")) {
+        deleteResource(id);
+        renderResources(getResources());
+    }
 }
 
-// Search
 searchInput.addEventListener("input", () => {
     const term = searchInput.value;
     renderResources(filterResources(term));
 });
 
-// Initial render
-renderResources(getResources());
+// Initial load
+document.addEventListener("DOMContentLoaded", () => {
+    renderResources(getResources());
+});
