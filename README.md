@@ -3,7 +3,6 @@
 A frontend-only web application that allows users to store, organize, and access personal learning resources through a login-gated interface.
 
 ## Features
-- Client-side login flow for personal access
 - Add and delete learning resources (links)
 - Search resources by title or personal notes
 - Persistent data storage using browser localStorage
@@ -21,8 +20,6 @@ This project uses client-side authentication and is intended for learning purpos
 https://sanchita-inloop.github.io/Personal-Resources-Library/
 
 ## Screenshots
-## Login Page
-https://github.com/Sanchita-InLoop/Personal-Resources-Library/blob/main/loginPage.png
 ## Resources Page
 https://github.com/Sanchita-InLoop/Personal-Resources-Library/blob/main/ResourcesList.png
 ## How to Run Locally
