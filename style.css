@@ -1,201 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+    --ink: #1B2430;
+    --paper: #FBF8F2;
+    --parchment: #F1E9D8;
+    --parchment-edge: #E3D8BE;
+    --teal: #3F6E64;
+    --teal-dark: #2C4E46;
+    --gold: #B8912F;
+    --stamp-red: #A6433A;
+    --text-muted: #6B6156;
+}
+
+* { box-sizing: border-box; }
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f0dada;
+    font-family: 'Inter', sans-serif;
+    background: var(--ink);
+    background-image:
+        radial-gradient(circle at 1px 1px, rgba(27,36,48,0.04) 1px, transparent 0);
+    background-size: 22px 22px;
     margin: 0;
+    color: var(--ink);
 }
 
+h1, h2, h3, h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
 
-.login-container {
-    background-color: rgb(253, 246, 246);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    width: 300px;
-    text-align: center;
+/* ===== Auth Page ===== */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.auth-card {
+    background: var(--parchment);
+    width: 100%;
+    max-width: 380px;
+    border-radius: 4px;
+    box-shadow: 0 12px 32px rgba(27,36,48,0.18);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Perforated edge — the signature detail, like a tear-off library ticket */
+.auth-card::before {
+    content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0; left: 0; right: 0;
+    height: 10px;
+    background-image: radial-gradient(circle, var(--paper) 3px, transparent 3.5px);
+    background-size: 16px 10px;
+    background-position: 4px 0;
 }
 
-
-.login-container h2 {
-    margin-bottom: 1rem;
-    font-size: 30px;
+.auth-header {
+    padding: 2.25rem 2rem 0.5rem;
+    text-align: center;
 }
 
-.login-container h4{
-    font-size:12px ;
-    font-weight: 100;
-    padding: 10px;
-    font-family: cursive;
-
-}
-.login-container input {
-    width: 90%;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+.auth-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
 }
 
-.login-container button {
-    padding: 0.5rem 1rem;
-    margin-top: 1rem;
-    width: 95%;
-    background-color: #4CAF50;
-    color: white;
+.auth-header h2 {
+    font-size: 1.6rem;
+    margin: 0.4rem 0 0.2rem;
+    color: var(--ink);
+}
+
+.auth-header p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0 0 1.25rem;
+}
+
+/* Tab toggle styled like catalog tabs */
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--parchment-edge);
+    margin: 0 2rem;
+}
+
+.auth-tab {
+    flex: 1;
+    background: none;
     border: none;
-    border-radius: 5px;
+    padding: 0.7rem 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
     cursor: pointer;
-    font-size: 1rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
 }
 
-.login-container button:hover {
-    background-color: #347838;
+.auth-tab.active {
+    color: var(--ink);
+    border-bottom-color: var(--gold);
 }
-/* Header */
+
+.auth-tab:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+}
+
+.auth-form {
+    padding: 1.75rem 2rem 2.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    border-radius: 3px;
+    border: 1px solid var(--parchment-edge);
+    background: var(--paper);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    color: var(--ink);
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(63,110,100,0.15);
+}
+
+.auth-form button.primary {
+    margin-top: 0.4rem;
+    padding: 0.7rem;
+    background-color: var(--ink);
+    color: var(--paper);
+    border: none;
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.auth-form button.primary:hover {
+    background-color: var(--teal-dark);
+}
+
+.auth-error {
+    font-size: 0.8rem;
+    color: var(--stamp-red);
+    min-height: 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ===== Dashboard ===== */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #af4c4c;
-    color: white;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    background-color: var(--ink);
+    color: var(--paper);
+    padding: 1.1rem 2rem;
 }
 
 header h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--paper);
+}
+
+header .eyebrow {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.15rem;
 }
 
 header button {
-    background-color: #ffffff33;
-    color: white;
-    border: 1px solid white;
-    padding: 0.4rem 1rem;
-    border-radius: 8px;
+    background-color: transparent;
+    color: var(--paper);
+    border: 1px solid rgba(251,248,244,0.4);
+    padding: 0.45rem 1rem;
+    border-radius: 3px;
     cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: 0.2s;
 }
 
 header button:hover {
-    background-color: white;
-    color: #af4c4c;
+    background-color: var(--paper);
+    color: var(--ink);
 }
 
-/* Controls Section */
 .controls {
-    margin: 1rem 2rem;
+    margin: 1.5rem 2rem 0.5rem;
 }
 
 .controls input {
-    padding: 0.6rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    padding: 0.65rem 0.9rem;
+    border-radius: 3px;
+    border: 1px solid var(--parchment-edge);
+    background: var(--parchment);
     width: 100%;
-    transition: 0.3s;
+    font-family: 'Inter', sans-serif;
+    transition: 0.2s;
 }
 
 .controls input:focus {
     outline: none;
-    border-color: #ad5050;
-    box-shadow: 0 0 5px #ad5050;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(63,110,100,0.12);
 }
 
-/* Add Resource Form */
 .add-resource {
     margin: 1rem 2rem;
-    background-color: #ffffff;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background-color: var(--parchment);
+    padding: 1.25rem;
+    border-radius: 4px;
+    border: 1px solid var(--parchment-edge);
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.6rem;
 }
 
-.add-resource input, .add-resource textarea {
-    padding: 0.5rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    transition: 0.3s;
+.add-resource h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.05rem;
 }
 
-.add-resource input:focus, .add-resource textarea:focus {
+.add-resource input, .add-resource textarea, .add-resource select {
+    padding: 0.6rem 0.75rem;
+    border-radius: 3px;
+    border: 1px solid var(--parchment-edge);
+    background: var(--paper);
+    font-family: 'Inter', sans-serif;
+    transition: 0.2s;
+}
+
+.add-resource input:focus, .add-resource textarea:focus, .add-resource select:focus {
     outline: none;
-    border-color: #ad5050;
-    box-shadow: 0 0 5px #ad5050;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(63,110,100,0.12);
 }
 
 .add-resource button {
-    background-color: #af4c4c;
-    color: white;
+    background-color: var(--ink);
+    color: var(--paper);
     border: none;
-    padding: 0.6rem;
-    border-radius: 8px;
+    padding: 0.65rem;
+    border-radius: 3px;
     cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    transition: 0.2s;
 }
 
 .add-resource button:hover {
-    background-color: #c68080;
+    background-color: var(--teal-dark);
 }
 
-/* Resource Cards */
+/* Resource Cards — styled as catalog index cards */
 .resource-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1rem;
-    margin: 1rem 2rem;
+    gap: 1.1rem;
+    margin: 1.25rem 2rem 2rem;
 }
 
 .resource-card {
-    background-color: #ffffff;
-    padding: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background-color: var(--paper);
+    padding: 1.1rem 1.1rem 1rem;
+    border-radius: 3px;
+    border: 1px solid var(--parchment-edge);
+    border-top: 3px solid var(--teal);
     display: flex;
     flex-direction: column;
-    transition: 0.3s;
+    gap: 0.35rem;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .resource-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(27,36,48,0.12);
+}
+
+.resource-card .tag-stamp {
+    align-self: flex-start;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    background: rgba(63,110,100,0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    margin-bottom: 0.2rem;
 }
 
 .resource-card h4 {
-    margin: 0 0 0.5rem 0;
-    color: #333;
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--ink);
 }
 
 .resource-card a {
-    color: #4CAF50;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--teal-dark);
     text-decoration: none;
     word-break: break-all;
-    margin-bottom: 0.5rem;
+}
+
+.resource-card a:hover {
+    text-decoration: underline;
 }
 
 .resource-card p {
-    font-size: 0.9rem;
-    margin: 0.3rem 0;
-    color: #555;
+    font-size: 0.85rem;
+    margin: 0.15rem 0 0.4rem;
+    color: var(--text-muted);
+}
+
+.resource-card .date-stamp {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    margin-top: -0.2rem;
 }
 
 .resource-card button {
     margin-top: auto;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 0.4rem 0.6rem;
-    border-radius: 8px;
+    align-self: flex-start;
+    background: none;
+    color: var(--stamp-red);
+    border: 1px solid var(--stamp-red);
+    padding: 0.35rem 0.7rem;
+    border-radius: 3px;
     cursor: pointer;
-    transition: 0.3s;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: 0.2s;
 }
 
 .resource-card button:hover {
-    background-color: #e53935;
+    background-color: var(--stamp-red);
+    color: var(--paper);
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--text-muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+    header { flex-direction: column; gap: 0.6rem; align-items: flex-start; }
+    .controls, .add-resource, .resource-list { margin-left: 1rem; margin-right: 1rem; }
 }

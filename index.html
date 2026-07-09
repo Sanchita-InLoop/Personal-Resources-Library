@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - Resource Library</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Resource Library</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="login-container">
-    <h2>Your Resource Library</h2>
-    <h4>Your personal collection of links, organised the way you think</h4>
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <button id="loginBtn">Login</button>
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-header">
+            <span class="auth-eyebrow">Est. Personal Archive</span>
+            <h2>Your Resource Library</h2>
+            <p>Your personal collection of links, organised the way you think</p>
+        </div>
+
+        <div class="auth-tabs">
+            <button class="auth-tab active" id="signInTab">Sign In</button>
+            <button class="auth-tab" id="signUpTab">Sign Up</button>
+        </div>
+
+        <form class="auth-form" id="authForm">
+            <input type="email" id="email" placeholder="Email" autocomplete="email" required>
+            <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" autocomplete="new-password" style="display: none;">
+            <div class="auth-error" id="authError" style="color: red; margin-bottom: 10px;"></div>
+            <button type="submit" class="primary" id="submitBtn">Sign In</button>
+        </form>
+    </div>
 </div>
 
 <script src="login.js"></script>
-<script>
-    
-    document.getElementById("loginBtn").addEventListener("click", () => {
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-        login(username, password);
-    });
-</script>
-
 </body>
 </html>

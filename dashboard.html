@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard - Resource Library</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Resource Library</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="login.js"></script>
+    <script>
+        checkAuth(); // Stop unauthorized access immediately before DOM rendering
+    </script>
 </head>
 <body>
 
@@ -29,11 +33,9 @@
     <!-- Resource cards will appear here -->
 </section>
 
-<script src="login.js"></script>
 <script src="dataController.js"></script>
 <script src="dashboard.js"></script>
 <script>
-    checkAuth(); // Protect page
     document.getElementById("logoutBtn").addEventListener("click", logout);
 </script>
 

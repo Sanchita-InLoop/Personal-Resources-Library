@@ -13,16 +13,28 @@ function renderResources(resources) {
         return;
     }
     resources.forEach(resource => {
+        // Ensure URLs are absolute for anchor tags
+        const formattedUrl = resource.url.startsWith("http://") || resource.url.startsWith("https://") 
+            ? resource.url 
+            : `https://${resource.url}`;
+
         const card = document.createElement("div");
         card.classList.add("resource-card");
         card.innerHTML = `
-            <h4>${resource.title}</h4>
-            <a href="${resource.url}" target="_blank">${resource.url}</a>
-            <p>${resource.note}</p>
+            <h4>${escapeHTML(resource.title)}</h4>
+            <a href="${formattedUrl}" target="_blank">${escapeHTML(resource.url)}</a>
+            <p>${escapeHTML(resource.note)}</p>
             <button onclick="deleteResourceCard('${resource.id}')">Delete</button>
         `;
         resourceList.appendChild(card);
     });
+}
+
+// Simple HTML escaping helper to prevent XSS injection
+function escapeHTML(str) {
+    return str.replace(/[&<>'"]/g, 
+        tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+    );
 }
 
 // Add resource
